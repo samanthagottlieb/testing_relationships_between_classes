@@ -39,6 +39,11 @@ RSpec.describe SecretDiary do
       expect(my_diary.read).to eq("Samantha's diary")
     end
 
-    pending "gets written"
+    it "gets written" do
+      allow(diary).to receive(:write)
+      my_diary.unlock
+
+      expect(my_diary.write("New diary entry")).to eq(nil)
+    end
   end
 end
